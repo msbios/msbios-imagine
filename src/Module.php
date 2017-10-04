@@ -7,18 +7,13 @@
 namespace MSBios\Imagine;
 
 use MSBios\ModuleInterface;
-use Zend\EventManager\EventInterface;
-use Zend\EventManager\LazyListenerAggregate;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\BootstrapListenerInterface;
-use Zend\Mvc\ApplicationInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class Module
- * @package MSBios\CPanel
+ * @package MSBios\Imagine
  */
 class Module implements
     ModuleInterface,
