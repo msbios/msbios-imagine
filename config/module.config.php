@@ -18,9 +18,12 @@ return [
                 InvokableFactory::class,
             \Imagine\Gmagick\Imagine::class =>
                 InvokableFactory::class
-        ],
+        ]
+    ],
+
+    'filters' => [
         'initializers' => [
-            // new ImagineInitializer
+            new ImagineInitializer
         ]
     ],
 
