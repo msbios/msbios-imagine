@@ -8,11 +8,12 @@
 
 namespace MSBios\Imagine;
 
-
 use Imagine\Gd\Imagine as GdImagine;
 use Imagine\Gmagick\Imagine as GmagickImagine;
+use Imagine\Image\ImagineInterface;
 use Imagine\Imagick\Imagine as ImagickImagine;
 use Interop\Container\ContainerInterface;
+use MSBios\Imagine\Exception\Exception;
 use Zend\ServiceManager\Initializer\InitializerInterface;
 
 /**
@@ -22,11 +23,9 @@ use Zend\ServiceManager\Initializer\InitializerInterface;
 class ImagineInitializer implements InitializerInterface
 {
     /**
-     * Initialize the given instance
-     *
-     * @param  ContainerInterface $container
-     * @param  object $instance
-     * @return void
+     * @param ContainerInterface $container
+     * @param object $instance
+     * @throws Exception
      */
     public function __invoke(ContainerInterface $container, $instance)
     {
@@ -36,17 +35,38 @@ class ImagineInitializer implements InitializerInterface
             $className = get_class($instance);
 
             if ($container->has(get_class($instance))) {
-                $instance->setImagine(
-                    $container->get($className)
-                );
-            } else if ($instance instanceof GdAwareInterface) {
-                $instance->setImagine($container->get(GdImagine::class));
-            } else if ($instance instanceof ImagickAwareInterface) {
-                $instance->setImagine($container->get(ImagickImagine::class));
-            } else if ($instance instanceof GmagickAwareInterfrace) {
-                $instance->setImagine($container->get(GmagickImagine::class));
+
+                /** @var ImagineInterface $imagine */
+                $imagine = $container->get($className);
+
+                if ($imagine instanceof ImagineInterface) {
+                    $instance->setImagine($imagine);
+                    return;
+                }
             }
 
+            if ($instance instanceof GdAwareInterface) {
+                $instance->setImagine($container->get(GdImagine::class));
+            } elseif ($instance instanceof ImagickAwareInterface) {
+                $instance->setImagine($container->get(ImagickImagine::class));
+            } elseif ($instance instanceof GmagickAwareInterfrace) {
+                $instance->setImagine($container->get(GmagickImagine::class));
+            } else {
+                throw new Exception('You must implement: ' . implode(', ', [
+                        GdAwareInterface::class,
+                        ImagickAwareInterface::class,
+                        GmagickAwareInterfrace::class
+                    ]));
+            }
         }
+    }
+
+    /**
+     * @param $an_array
+     * @return ImagineInitializer
+     */
+    public static function __set_state($an_array)
+    {
+        return new self();
     }
 }

@@ -6,7 +6,6 @@
 
 namespace MSBios\Imagine;
 
-
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -19,6 +18,9 @@ return [
                 InvokableFactory::class,
             \Imagine\Gmagick\Imagine::class =>
                 InvokableFactory::class
+        ],
+        'initializers' => [
+            // new ImagineInitializer
         ]
     ],
 
