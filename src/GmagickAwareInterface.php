@@ -6,10 +6,10 @@
 namespace MSBios\Imagine;
 
 /**
- * Interface GmagickAwareInterfrace
+ * Interface GmagickAwareInterface
  * @package MSBios\Imagine
  */
-interface GmagickAwareInterfrace extends ImagineAwareInterface
+interface GmagickAwareInterface extends ImagineAwareInterface
 {
 
 }
