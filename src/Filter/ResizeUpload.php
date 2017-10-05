@@ -23,13 +23,84 @@ class ResizeUpload extends RenameUpload implements
 {
     use ImagineAwareTrait;
 
+    /** @var array */
+    protected $resizeOptions = [
+        'width' => 1,
+        'height' => 1,
+        'filter' => ImageInterface::FILTER_UNDEFINED
+    ];
+
+    /**
+     * @param $width
+     * @return $this
+     */
+    public function setWidth($width)
+    {
+        $this->resizeOptions['width'] = $width;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWidth()
+    {
+        return $this->resizeOptions['width'];
+    }
+
+    /**
+     * @param $height
+     * @return $this
+     */
+    public function setHeight($height)
+    {
+        $this->resizeOptions['height'] = $height;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->resizeOptions['height'];
+    }
+
+    /**
+     * @param $filter
+     * @return $this
+     */
+    public function setFilter($filter)
+    {
+        $this->resizeOptions['filter'] = $filter;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilter()
+    {
+        return $this->resizeOptions['filter'];
+    }
+
+
+    /**
+     * @param $options
+     * @return $this
+     */
+    public function setResize($options)
+    {
+        $this->setOptions($options);
+        return $this;
+    }
+
     /**
      * @param array|string $value
      * @return array|string
      */
     public function filter($value)
     {
-
         // error : 0
         // name : "13.avatar200x200.jpg"
         // size : 4330
@@ -39,39 +110,15 @@ class ResizeUpload extends RenameUpload implements
         /** @var array $result */
         $result = parent::filter($value);
 
-        /** @var ImagineInterface $imagine */
-        $imagine = $this->getImagine();
-
         /** @var ImageInterface $image */
-        $image = $imagine->open($result['tmp_name']);
-        $image->resize(new Box(300, 300), ImageInterface::FILTER_LANCZOS);
+        $image = $this->getImagine()->open($result['tmp_name']);
+        $image->resize(new Box($this->getWidth(), $this->getHeight()), $this->getFilter());
         $image->save($result['tmp_name']);
 
-        /** @var string $path */
-        $path = $this->getTarget() . 'thumb' . DIRECTORY_SEPARATOR;
+        $result['width'] = $this->getWidth();
+        $result['height'] = $this->getHeight();
 
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-
-        $image->resize(new Box(47, 47), ImageInterface::FILTER_LANCZOS);
-        $image->save($path . $result['name']);
-
-
-        /** @var array $data */
-        $data = [
-            'src' => $result['tmp_name'],
-            'width' => 300,
-            'height' => 300,
-            'small' => [
-                'src' => $result['tmp_name'],
-                'width' => 47,
-                'height' => 47
-            ]
-        ];
-
-        return $data;
-
+        return $result;
     }
 
 }
