@@ -22,6 +22,12 @@ return [
     ],
 
     'filters' => [
+        'factories' => [
+            Filter\ResizeUpload::class =>
+                InvokableFactory::class,
+            Filter\Thumbnail::class =>
+                InvokableFactory::class
+        ],
         'initializers' => [
             new ImagineInitializer
         ]
