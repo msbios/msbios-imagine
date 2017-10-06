@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad7d5fe4a567ac593f7a5a640cf82940",
+    "content-hash": "165a876d413db90af701cd2f084740e2",
     "packages": [
         {
             "name": "imagine/imagine",
@@ -66,16 +66,16 @@
         },
         {
             "name": "msbios/filter",
-            "version": "v1.0.1",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-filter.git",
-                "reference": "0f414a021fd6d48a147a575a0634541b5d52b867"
+                "reference": "2e1296070e38a9a48bb72b7ee066e6913081e16d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-filter/zipball/0f414a021fd6d48a147a575a0634541b5d52b867",
-                "reference": "0f414a021fd6d48a147a575a0634541b5d52b867",
+                "url": "https://api.github.com/repos/msbios/msbios-filter/zipball/2e1296070e38a9a48bb72b7ee066e6913081e16d",
+                "reference": "2e1296070e38a9a48bb72b7ee066e6913081e16d",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2017-10-05T14:00:40+00:00"
+            "time": "2017-10-05T14:44:34+00:00"
         },
         {
             "name": "msbios/msbios",
@@ -1820,16 +1820,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0"
+                "reference": "8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
-                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46",
+                "reference": "8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46",
                 "shasum": ""
             },
             "require": {
@@ -1871,7 +1871,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29T21:54:42+00:00"
+            "time": "2017-10-05T14:43:42+00:00"
         },
         {
             "name": "webmozart/assert",
