@@ -9,7 +9,7 @@ use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Imagine\Image\ImagineInterface;
 use MSBios\Filter\File\RenameUpload;
-use MSBios\Imagine\ImagickAwareInterface;
+use MSBios\Imagine\GdAwareInterface;
 use MSBios\Imagine\ImagineAwareInterface;
 use MSBios\Imagine\ImagineAwareTrait;
 
@@ -19,7 +19,7 @@ use MSBios\Imagine\ImagineAwareTrait;
  */
 class ResizeUpload extends RenameUpload implements
     ImagineAwareInterface,
-    ImagickAwareInterface
+    GdAwareInterface
 {
     use ImagineAwareTrait;
 
