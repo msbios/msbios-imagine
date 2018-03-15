@@ -120,5 +120,4 @@ class ResizeUpload extends RenameUpload implements
 
         return $result;
     }
-
 }

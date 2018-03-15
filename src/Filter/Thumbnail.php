@@ -133,7 +133,9 @@ class Thumbnail extends AbstractFilter implements
         /** @var ImageInterface $image */
         $image = $this->getImagine()->open($value);
         $image->thumbnail(
-            new Box($this->getWidth(), $this->getHeight()), $this->getMode(), $this->getFilter()
+            new Box($this->getWidth(), $this->getHeight()),
+            $this->getMode(),
+            $this->getFilter()
         );
         $image->save($value);
 
@@ -145,5 +147,4 @@ class Thumbnail extends AbstractFilter implements
             'height' => $this->getHeight()
         ];
     }
-
 }

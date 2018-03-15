@@ -28,16 +28,18 @@
     "msbios/filter": "^1.0"
   },
   "require-dev": {
-    "msbios/application": "^1.0"
+    "msbios/application": "^1.0",
+    "msbios/test": "^1.0"
   },
   "scripts": {
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
     "test": [
       "@cs-check",
-      "phpunit"
+      "phpunit --colors=always"
     ],
-    "serve": "php -S 0.0.0.0:3107 -t bin bin/msbios-cpanel-module.php",
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+    "upload-coverage": "coveralls -v",
     "commit": "git add . && git commit -a -m \"Lazy Composer Commiter\" && git push"
   }
 }
