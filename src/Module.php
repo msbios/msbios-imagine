@@ -28,7 +28,7 @@ class Module implements
     InitProviderInterface
 {
     /** @const VERSION */
-    const VERSION = '1.0.7';
+    const VERSION = '1.0.8';
 
     /**
      * Returns configuration to merge with application configuration
