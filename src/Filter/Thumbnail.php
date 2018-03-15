@@ -17,6 +17,7 @@ use Zend\Filter\AbstractFilter;
 /**
  * Class Thumbnail
  * @package MSBios\Imagine\Filter
+ * @deprecated move to msbios/filter
  */
 class Thumbnail extends AbstractFilter implements
     ImagineAwareInterface,
@@ -129,24 +130,20 @@ class Thumbnail extends AbstractFilter implements
      */
     public function filter($value)
     {
-        // error : 0
-        // name : "13.avatar200x200.jpg"
-        // size : 4330
-        // tmp_name : "./public/uploads/person/tr/ze/6c/2e/13.avatar200x200_59d5f3fc907ac7_26497189.jpg"
-        // type : "image/jpeg"
-
-        /** @var array $result */
-        $result = parent::filter($value);
-
         /** @var ImageInterface $image */
-        $image = $this->getImagine()->open($result['tmp_name']);
-        $image->thumbnail(new Box($this->getWidth(), $this->getHeight()), $this->getFilter());
-        $image->save($result['tmp_name']);
+        $image = $this->getImagine()->open($value);
+        $image->thumbnail(
+            new Box($this->getWidth(), $this->getHeight()), $this->getMode(), $this->getFilter()
+        );
+        $image->save($value);
 
         $result['width'] = $this->getWidth();
         $result['height'] = $this->getHeight();
 
-        return $result;
+        return [
+            'width' => $this->getWidth(),
+            'height' => $this->getHeight()
+        ];
     }
 
 }

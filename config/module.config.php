@@ -9,8 +9,7 @@ namespace MSBios\Imagine;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-
-    'service_manager' => [
+    'imagine_manager' => [
         'factories' => [
             \Imagine\Gd\Imagine::class =>
                 InvokableFactory::class,
@@ -29,10 +28,7 @@ return [
                 InvokableFactory::class
         ],
         'initializers' => [
-            new ImagineInitializer
+            // new Initializer\ImagineManagerInitializer
         ]
-    ],
-
-    Module::class => [
     ],
 ];

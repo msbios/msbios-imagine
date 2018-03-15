@@ -7,7 +7,6 @@ namespace MSBios\Imagine\Filter;
 
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
-use Imagine\Image\ImagineInterface;
 use MSBios\Filter\File\RenameUpload;
 use MSBios\Imagine\GdAwareInterface;
 use MSBios\Imagine\ImagineAwareInterface;
@@ -16,6 +15,7 @@ use MSBios\Imagine\ImagineAwareTrait;
 /**
  * Class ResizeUpload
  * @package MSBios\Imagine\Filter
+ * @deprecated move to msbios/filter
  */
 class ResizeUpload extends RenameUpload implements
     ImagineAwareInterface,
