@@ -34,11 +34,13 @@ class ConfigProvider
         return [
             'factories' => [
                 'ImagineManager' =>
-                    ImaginePluginManagerFactory::class
+                    ImaginePluginManagerFactory::class,
             ],
             'aliases' => [
                 ImaginePluginManagerInterface::class =>
-                    'ImagineManager'
+                    'ImagineManager',
+                ImaginePluginManager::class =>
+                    ImaginePluginManagerInterface::class
             ]
         ];
     }
